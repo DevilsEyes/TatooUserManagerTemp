@@ -3,8 +3,8 @@
  */
 
 require.config({
-    baseUrl: '/Tatoo%20userManagerT/',  //网络路径
-    //baseUrl: '/bs/',//本机路径
+    //baseUrl: '/Tatoo%20userManagerT/',  //本机路径
+    baseUrl: '/companyManager/',//网络路径
     //baseUrl: '/mzg_cms/',//本机路径
     paths: {
         //test:'test.js',
@@ -60,6 +60,12 @@ require.config({
 });
 
 require(['avalon', "SysUtil?v=a23626isf", "SysConfig", 'mmRouter', 'main?201sdg436g', "domReady!", "Zebar", "jsonp", 'md5'], function (avalon, SysUtil, SysConfig) {
+
+    //SysConfig.set('http://api.meizhanggui.cc/WenShen/');
+    SysConfig.set('http://123.57.42.13/WenShen/');
+    //SysConfig.set('http://192.168.56.1/WenShen/');
+    //SysConfig.set('http://192.168.199.154/WenShen/');
+
     require(['login?2015071sg6',
         'commodityList?20151017gerheS',
         'commodityAdd?20151017fsdfS',
