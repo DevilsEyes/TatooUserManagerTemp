@@ -59,7 +59,7 @@ require.config({
 
 require(['avalon', "SysUtil?v=fqwff", "SysConfig", 'mmRouter', 'main?201sdg436g', "domReady!", "Zebar", "jsonp", 'md5'], function (avalon, SysUtil, SysConfig) {
 
-    require(['login?2015071sg6',
+    require(['login?g34g4fd',
         'commodityList?20151017gerheS',
         'commodityAdd?20151017fsdfS',
         'commodityAuthList?20151017BS',

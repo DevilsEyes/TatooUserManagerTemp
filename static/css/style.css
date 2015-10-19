@@ -20,6 +20,37 @@ nav{
     top:0;
 }
 
+.userInfo{
+    text-align: right;
+    margin-top: 5px;
+    margin-right: 20px;
+}
+
+.userInfo>*{
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.userInfo p{
+    font-size: 10px;
+    margin: 2px;
+    color: #dddddd;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.userInfo p:hover{
+    color: #5bc0de;
+}
+
+.userInfo h6{
+    padding-top: 4px;
+    color: #337ab7;
+    font-size: 14px;
+    margin: 2px;
+
+}
+
 .navbar-brand:hover{
     color: #337ab7 !important;
 }

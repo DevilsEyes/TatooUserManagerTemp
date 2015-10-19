@@ -5,7 +5,7 @@
 
     <div class="form-inline">
         <ul class="nav nav-tabs" style="margin: 20px 0;">
-            <li role="presentation" ms-class-active="sale==1" ms-click="e$typeTab($event,1)"><a>上架中</a></li>
+            <li role="presentation" ms-class-active="sale==1" ms-click="e$typeTab($event,1)"><a>已上架</a></li>
             <li role="presentation" ms-class-active="sale==2" ms-click="e$typeTab($event,2)"><a>已下架</a></li>
             <!--<li role="presentation" ms-class-active="sale==2" ms-click="e$typeTab($event,2)"><a>待审核</a></li>-->
         </ul>
@@ -46,7 +46,6 @@
                 <th class="store_field_tab col-xs-1 text-center">标题</th>
                 <th class="store_field_tab col-xs-1 text-center">纹身师</th>
                 <th class="store_field_tab col-xs-1 text-center">价格</th>
-                <th class="store_field_tab col-xs-1 text-center">机构</th>
                 <th class="store_field_tab col-xs-1 text-center">浏览量</th>
                 <th class="store_field_tab col-xs-1 text-center">收藏数</th>
                 <th class="store_field_tab col-xs-1 text-center">购买数</th>
@@ -59,9 +58,8 @@
                 <td><a ms-attr-href="{{row.images[0]}}" target="_blank"><img
                         ms-attr-src="{{row.images[0]+'?imageView/1/w/200/h/200'}}"/></a></td>
                 <td>{{row.title}}</td>
-                <td><a ms-href="#!/userInfo/{{row.storeId}}">{{row.storeId}}</a></td>
+                <td><a target='_blank' ms-attr-href="http://m.meizhanggui.cc/wsdk/?storeId={{row.storeId}}">{{row.nickname}}</a></td>
                 <td>{{f$current(row.price)}}</td>
-                <td>{{f$none(row.companyName)}}</td>
                 <td>{{row.visitCount}}</td>
                 <td>{{row.favoriteCount}}</td>
                 <td>{{row.buyCount}}</td>

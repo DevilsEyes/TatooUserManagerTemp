@@ -8,11 +8,11 @@
     <br/>
     <div class="input-group col-lg-3">
         <label class="input-group-addon">密码</label>
-        <input id="password" type="password" class="form-control" ms-duplex="password" placeholder="输入密码">
+        <input id="password" type="password" class="form-control" ms-duplex="password" placeholder="输入密码" ms-keydown="login($event)">
     </div>
     <br/>
     <div class="input-group">
-        <input class="btn btn-primary" type="button" value="登录" ms-click="login"/>
+        <input class="btn btn-primary" type="button" value="登录" ms-click="login($event)"/>
     </div>
 
 </div>

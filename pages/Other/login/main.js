@@ -9,10 +9,8 @@ define(["avalon",'mmRouter', "text!/template/login.html",'SysConfig','SysUtil'],
         account: "",
         password: "",
 
-        login: function (sort) {
-
-            var formData = {order: [sort]};
-            formData[sort] = {order: -1};
+        login: function ($event) {
+            if ($event.which != 1 && $event.which != 13)return;
             $.jsonp({
                 //url: SysConfig.ApiUrl+"/V2.0.0/Admin/login?_method=POST",
                 url: SysConfig.ApiUrl+"V3.0.0/CompanyManage/login?_method=POST",
@@ -28,7 +26,7 @@ define(["avalon",'mmRouter', "text!/template/login.html",'SysConfig','SysUtil'],
                     if(data.code==0)
                     {
                         SysUtil.LoginSuccess();
-                    }else alert(data.msg);
+                    }
                 }
             });
 

@@ -58,7 +58,7 @@
                 <td><a ms-attr-href="{{row.images[0]}}" target="_blank"><img
                         ms-attr-src="{{row.images[0]+'?imageView/1/w/200/h/200'}}"/></a></td>
                 <td>{{row.title}}</td>
-                <td><a ms-href="#!/userInfo/{{row.storeId}}">{{row.storeId}}</a></td>
+                <td><a target='_blank' ms-attr-href="http://m.meizhanggui.cc/wsdk/?storeId={{row.storeId}}">{{row.nickname}}</a></td>
                 <td>{{f$status(row.status)|html}}</td>
                 <td>
                     <!--{{creat$button({title:'通过',click:'e$pass($event,row._id,1)',visible:'type==0'})|html}}-->

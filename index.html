@@ -22,6 +22,14 @@
 <body  class="ms-controller"  ms-controller="root">
 <nav class="topbar">
         <a class="navbar-brand" href="#" >纹身大咖 - 商家后台</a>
+    <div ms-if="logined" class="userInfo">
+        <div>
+            <h6>{{nickname}}</h6>
+            <p ms-click="e$logout()">安全退出</p>
+        </div>
+        <img ms-src="{{avatar + '?imageView/1/w/40/h/40'}}" class="img-circle">
+
+    </div>
 </nav>
 
 <div class="container ms-controller"  ms-controller="root">

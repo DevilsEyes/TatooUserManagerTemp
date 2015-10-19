@@ -12,11 +12,11 @@ define(['avalon', 'mmRouter', 'SysConfig', 'SysValue', 'SysUtil', 'unitTemp', 'j
         $id: "root",
         bodyPage: 'empty',
         companyRole:0,
+        avatar:'',
+        nickname:'',
         role: 0,
         temprole: 0,
         menus: [
-
-
             {
                 title: "商品",
                 icon: 'yen',
@@ -24,21 +24,21 @@ define(['avalon', 'mmRouter', 'SysConfig', 'SysValue', 'SysUtil', 'unitTemp', 'j
                 url: '#!/commodityList/',
                 submenus: [
                     {
-                        title: "商品 - 列表",
+                        title: "店铺商品",
                         url: "#!/commodityList/",
                         name: 'commodityList',
                         role: 5,
                         visible:true
                     },
                     {
-                        title: "审核列表",
+                        title: "审核中商品",
                         url: "#!/commodityAuthList/",
                         name: 'commodityAuthList',
                         role: 5,
                         visible:true
                     },
                     {
-                        title: "编辑/新增",
+                        title: "新增商品",
                         url: "#!/commodityAdd/",
                         name: 'commodityAdd',
                         role: 5,
@@ -57,6 +57,27 @@ define(['avalon', 'mmRouter', 'SysConfig', 'SysValue', 'SysUtil', 'unitTemp', 'j
         tab: function ($event, role, url) {
             model.role = role;
             location.hash = url;
+        },
+        e$logout:function(){
+            $.jsonp({
+                url: SysConfig.ApiUrl + "V3.0.0/User/logout?_method=POST",
+                callbackParameter: "callback",
+                success: function (data) {
+                    data = JSON.parse(data);
+                    console.dir(data);
+                    if(data.code==0){
+                        layer.msg('您已安全退出!');
+                        avalon.vmodels.root.logined = false;
+                        return location.hash = '#!login';
+                    }else{
+                        layer.msg(data.msg);
+                    }
+                },
+                error: function () {
+                    layer.msg('您的网络连接不太顺畅哦');
+                    layer.closeAll('loading');
+                }
+            });
         },
 
         creat$input: function (object) {

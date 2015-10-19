@@ -20,7 +20,12 @@ define(function(){
             avalon.vmodels.root.logined = true;
         },
         RoleCheck:function(data){
-            if (data.code == 4003||data.code == 7001){
+            if(data.code == 6412){
+                avalon.vmodels.root.logined = false;
+                location.href = '#!/Login/';
+                return;
+            }
+            else if (data.code == 4003||data.code == 7001){
                 layer.msg('请先登录！');
                 avalon.vmodels.root.logined = false;
                 location.href = '#!/Login/';
@@ -33,7 +38,8 @@ define(function(){
             }
             else if(data.code==0){
                 window.cid = data.data.userInfo.companyId;
-                console.log(window.cid);
+                avalon.vmodels.root.avatar = data.data.userInfo.avatar;
+                avalon.vmodels.root.nickname = data.data.userInfo.nickname;
                 window.clerkList = data.data.clerkList;
                 window.companyRole = data.data.companyRole;
                 avalon.vmodels.root.logined = true;
