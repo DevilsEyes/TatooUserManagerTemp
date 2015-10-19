@@ -1,0 +1,314 @@
+body{
+    min-width: 1000px !important;
+    /*width: 1000px  !important;*/
+}
+
+nav{
+    z-index: 999;
+}
+
+.container{
+    min-width: 1000px !important;
+    margin: 0 !important;
+}
+
+.topbar{
+    background-color: white !important;
+    border-bottom: solid 1px #dddddd;
+    position: fixed;
+    width: 100%;
+    top:0;
+}
+
+.navbar-brand:hover{
+    color: #337ab7 !important;
+}
+
+.nav.nav-pills.nav-stacked * {
+    transition: all 0.3s;
+}
+
+.nav.nav-pills.nav-stacked > li {
+    height: 0;
+    padding-bottom: 40px;
+    overflow: hidden;
+}
+
+.nav.nav-pills.nav-stacked > li.expand {
+    height: 0 !important;
+    padding-bottom: 0;
+    overflow: hidden;
+}
+
+.nav.nav-pills.nav-stacked > li.submenus {
+    padding-left: 40px;
+}
+
+.Zebra_DatePicker_Icon {
+    left: 170px !important;
+}
+
+input.date {
+    background-color: white !important;
+}
+
+.sidebar {
+    width: 200px;
+    position: fixed;
+    top: 51px;
+    height: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 0;
+    background-color: #f6f6f6;
+    border-right: solid 1px #dddddd;
+    /*overflow: scroll;*/
+    overflow-y: hidden;
+    /*overflow-y: auto; /!* Scrollable contents if viewport is shorter than content. *!/*/
+    text-align: left;
+}
+
+.sidebar ul > li {
+    color: white;
+    padding: 10px 0;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.main {
+    padding: 80px 20px 0 220px;
+
+}
+
+.sidebar ul > li > div {
+    padding: 5px 20px;
+    color: #888888;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.sidebar ul > li > div:hover {
+    padding-left: 25px;
+    color: #444444;
+}
+
+.sidebar ul > li > a {
+    display: block;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    color: #888888;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+
+.sidebar ul > li > a:hover {
+    padding-left: 45px !important;
+    color: #444444;
+}
+
+.sidebar ul > li.expand.active > div {
+    color: #337ab7 !important;
+    background-color: #f0f0f0;
+}
+
+.sidebar ul > li.expand > a {
+    padding: 10px 20px 30px 40px;
+}
+
+.sidebar ul > li > a.active {
+    color: white !important;
+    background-color: #337ab7 !important;
+    border-radius: 4px;
+    margin: 5px 10px;
+}
+
+.container-fluid {
+    width: 100%;
+}
+
+.btn-add {
+    cursor: pointer;
+    color: #fff;
+    background-color: #5bc0de;
+    border-color: #337ab7;
+}
+
+.btn-add:hover {
+    color: #fff;
+    background-color: #31b0d5;
+    border-color: #269abc;
+}
+
+.btn-add:active {
+    color: #fff;
+    background-color: #31b0d5;
+    border-color: #269abc;
+}
+
+.btn-edit {
+    cursor: pointer;
+    color: #fff;
+    background-color: #f0ad4e;
+    border-color: #eea236;
+}
+
+.btn-edit:hover {
+    color: #fff;
+    background-color: #ec971f;
+    border-color: #d58512;
+}
+
+.btn-edit:active {
+    color: #fff;
+    background-color: #ec971f;
+    border-color: #d58512;
+}
+
+.tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: solid 1px rgb(204, 204, 204);
+    font-size: 12px;
+    margin: 5px 5px 10px 0;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.tag:hover {
+    border: solid 1px rgb(200, 70, 70);
+    background-color: rgb(217, 83, 79);
+    color: white;
+}
+
+.img-control {
+    position: absolute;
+    border-radius: 4px;
+    overflow: hidden;
+    width: 110px;
+    height: 110px;
+    cursor: pointer;
+}
+
+.img-ban {
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    padding-top: 20px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.img-ban > span {
+    font-size: 50px;
+}
+
+.img-top {
+    position: absolute;
+    margin-left: -80px;
+    width: 80px;
+    background-color: rgb(50, 50, 50);
+    opacity: 0.5;
+    height: 110px;
+    padding: 36px 25px;
+    color: white;
+    border-radius: 4px 0 0 4px;
+    transition: all 0.3s;
+}
+
+.img-delete {
+    position: absolute;
+    margin-left: 110px;
+    width: 30px;
+    background-color: rgb(170, 20, 20);
+    color: white;
+    padding: 7px 7px;
+    opacity: 0.5;
+    height: 30px;
+    border-radius: 0 4px 0 0;
+    transition: opacity, margin 0.3s;
+}
+
+.img-crop {
+    position: absolute;
+    margin-top: 30px;
+    margin-left: 110px;
+    width: 30px;
+    background-color: rgb(71, 172, 202);
+    color: white;
+    padding: 32px 7px;
+    opacity: 0.5;
+    height: 80px;
+    border-radius: 0 0 4px 0;
+    transition: opacity, margin 0.3s;
+}
+
+.img-control:hover > *:hover {
+    opacity: 0.9;
+}
+
+.img-control:hover > .img-delete {
+    margin-left: 80px;
+}
+
+.img-control:hover > .img-crop {
+    margin-left: 80px;
+}
+
+.img-control:hover > .img-top {
+    margin-left: 0;
+}
+
+.my-addon {
+    height: 34px;
+    margin-left: -5px;
+    display: inline-block;
+    position: absolute;
+    border-radius: 0 4px 4px 0;
+    padding: 8px 12px 8px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #ccc;
+}
+
+.imgCutAddDialog > div > div:first-child {
+    position: absolute;
+    width: 110px;
+    text-align: center
+}
+
+.imgCutAddDialog .img-thumbnail.thumb{
+    width:110px;height:110px;
+}
+
+.imgCutAddDialog .img-thumbnail.thumb>img{
+    width: 100px;
+}
+
+.imgCutAddDialog .thumb-info>span{
+    display: block;
+    margin-top: -10px;
+    color: #888888;
+}
+
+.imgCutAddDialog .thumb-info>h6{
+    display: block;
+    color: #aaaaaa;
+}
+
+.imgCutAddDialog > div > div:nth-child(2) {
+    margin-left: 120px;
+}

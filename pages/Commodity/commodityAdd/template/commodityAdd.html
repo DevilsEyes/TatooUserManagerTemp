@@ -1,0 +1,139 @@
+<div ms-controller="commodityAdd">
+
+    <ol class="breadcrumb">
+        <li><a href="#!/commodityList/">商品列表</a></li>
+        <li class="active" ms-if="pattern=='add'">新增</li>
+        <li class="active" ms-if="pattern=='edit'&&sale==2">编辑</li>
+        <li class="active" ms-if="pattern=='edit'&&sale==1">查看</li>
+    </ol>
+
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            <label class="col-xs-2 control-label">标题</label>
+
+            <div class="col-xs-10">
+                <input type="text" class="form-control" placeholder="输入标题" ms-duplex="title"
+                       ms-attr-disabled="readOnly">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-xs-2 control-label">描述</label>
+
+            <div class="col-xs-10">
+                <textarea class="form-control" rows="3" ms-duplex="content" placeholder="输入内容"
+                          ms-attr-disabled="readOnly"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-xs-2 control-label">图片</label>
+
+            <div class="col-xs-10" id="imgArea">
+                <div ms-repeat="images" style="display: inline-block;margin:10px 10px 10px 0;" class="img-el">
+                    <div class="img-control" ms-if="!readOnly">
+                        <div class="img-ban" ms-if="el.width!=el.height" ms-click="e$ImgControl($event,$index,'crop')">
+                            <span class="glyphicon glyphicon-scissors"></span>
+                            <br>需要裁剪
+                        </div>
+                        <div class="img-top" ms-if="$index!=0" ms-click="e$ImgControl($event,$index,'top')">
+                            设为<br>封面
+                        </div>
+                        <div class="img-crop" ms-click="e$ImgControl($event,$index,'crop')">
+                            <span class="glyphicon glyphicon-scissors"></span>
+                        </div>
+                        <div class="img-delete" ms-click="e$ImgControl($event,$index,'delete')">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </div>
+                    </div>
+                    <img ms-attr-src="{{el.url+'?imageView/1/w/100/h/100'}}" class="img-thumbnail"
+                         style="width: 110px;height: 110px;">
+                </div>
+                <br ms-visible="images.length>0">
+
+                <div class="progress" ms-visible="isUploading&&images.length<9" style="margin-top:10px">
+                    <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar">
+                    </div>
+                </div>
+
+                {{creat$button({icon:'picture',id:'uploadimg',visible:'!isUploading&&(!readOnly)&&images.length<9'})|html}}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-xs-2 control-label">纹身师</label>
+
+            <div class="col-xs-10 form-inline">
+                <span ms-if="tattooist.userId" style="display: inline-block;margin:7px 0 20px 0">
+                    <!--<img ms-attr-src="{{tattooist.avatar + '?imageView/0/w/60/h/60'}}" class="img-circle"/>-->
+                    {{tattooist.nickname}}
+                    <a target='_blank' s-attr-href="http://m.meizhanggui.cc/wsdk/?storeId={{tattooist.userId}}">
+                        #{{tattooist.userId}}
+                    </a>
+                </span>
+                <br ms-if="tattooist.userId">
+
+                {{creat$button({icon:'plus',visible:'(!tattooist.userId)&&(!readOnly)',click:'e$selectUser'})|html}}
+                {{creat$button({icon:'edit',skin:'warning',visible:'tattooist.userId&&(!readOnly)',click:'e$selectUser'})|html}}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-xs-2 control-label">市场价</label>
+
+            <div class="col-xs-10 form-inline">
+                <input type="tel" class="form-control" ms-duplex="primeCost" maxlength="9" placeholder="输入价格"
+                       ms-attr-disabled="readOnly">
+                <label class="my-addon"><span class="glyphicon glyphicon-yen"></span></label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-xs-2 control-label">价格</label>
+
+            <div class="col-xs-10 form-inline">
+                <input type="tel" class="form-control" ms-duplex="price" maxlength="9" placeholder="输入价格"
+                       ms-attr-disabled="readOnly">
+                <label class="my-addon"><span class="glyphicon glyphicon-yen"></span></label>
+            </div>
+        </div>
+
+        <!--<div class="form-group">-->
+            <!--<label class="col-xs-2 control-label">地点</label>-->
+
+            <!--<div class="col-xs-10 form-inline">-->
+                <!--<select class="form-control province" style="width:80px;margin-right:10px;" ms-duplex="province"-->
+                        <!--ms-attr-disabled="readOnly">-->
+                    <!--<option value="0">无</option>-->
+                    <!--<option ms-repeat="ProvinceList" ms-attr-value="el.code">{{el.name}}</option>-->
+                <!--</select>-->
+                <!--<select class="form-control city" style="width:80px;margin-right:10px;" ms-duplex="city"-->
+                        <!--ms-attr-disabled="readOnly">-->
+                    <!--<option value="0">无</option>-->
+                    <!--<option ms-repeat="CityList" ms-attr-value="el.code">{{el.name}}</option>-->
+                <!--</select>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <div class="form-group" ms-if="sale!=0">
+            <label class="col-xs-2 control-label">状态</label>
+
+            <div class="col-xs-10 form-inline">
+                <select class="form-control" ms-duplex="sale" disabled>
+                    <option value="1">已上架</option>
+                    <option value="2">已下架</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-xs-offset-2 col-xs-10">
+                {{creat$button({skin:'success',title:'保存',icon:'saved',visible:'sale!=1&&(!readOnly)&&role',click:'e$EditAdd($event)'})|html}}
+                {{creat$button({skin:'warning',title:'编辑',icon:'edit',visible:'sale==1&&(!readOnly)&&role',click:'e$Down($event)'})|html}}
+            </div>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,13 @@
+<button class='btn btn-{@if skin}${skin}{@else}default{@/if} {@if myclass}${myclass}{@/if}'
+        {@if id} id='${id}' {@/if}
+{@if click} ms-click='${click}' {@/if}
+{@if visible} ms-visible='${visible}' {@/if}
+{@if mystyle} style='${mystyle}' {@/if}>
+
+{@if icon} <span class='glyphicon glyphicon-${icon}' aria-hidden='true'></span>{@/if}
+
+{@if icon && title}&nbsp;{@/if}
+
+{@if title}${title}{@/if}
+
+</button>

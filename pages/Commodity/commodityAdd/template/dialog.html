@@ -1,0 +1,22 @@
+<div class="imgCutAddDialog" ms-controller="root">
+    <div ms-controller="commodityAdd" style="text-align: left">
+
+        <div>
+            <div class="img-thumbnail thumb">
+                <img ms-src="{{dialog.thumb}}" ms-if="dialog.thumb"/>
+            </div>
+            <br>
+            <div ms-if="dialog.cropWidth" class="thumb-info">
+                <h5>图片宽度</h5>
+                <span>{{dialog.cropWidth}}px</span>
+                <h6>若图片过大，将自动缩放到750x750</h6>
+            </div>
+        </div>
+
+        <div ms-if="dialog.croper.url" class="img-thumbnail">
+            <img ms-attr-src="{{dialog.croper.url}}"id="crop-img" style="width:430px;">
+        </div>
+
+        {{creat$button({title:'完成',icon:'saved',skin:'success',class:'btn-block',click:'e$ImgCrop()'})|html}}
+    </div>
+</div>

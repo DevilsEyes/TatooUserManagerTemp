@@ -1,0 +1,11 @@
+<${'div'} class="form-group col-sm-12" {@if msif} ms-if="${msif}" {@/if} >
+    <${'label'} class="col-sm-${lw} control-label">
+        ${key}
+    <${'/label'}>
+
+    <${'p'} class="col-sm-${pw} form-control-static">
+        {@if link}<${'a'} ms-href="{{${link}}}">{@/if}
+        {{${value}{@if filter}|${filter}{@/if}}}
+        {@if link}<${'/a'}>{@/if}
+    <${'/p'}>
+<${'/div'}>

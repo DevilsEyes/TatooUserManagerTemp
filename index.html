@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="cn">
+<head>
+    <meta charset="utf-8">
+    <title>纹身大咖 - 商家后台</title>
+    <script src="./vendor/jquery/jquery.min.js"></script>
+    <script src="./vendor/jsonp/jsonp.js"></script>
+    <script >
+        $('head').append("<script src='vendor/avalon/avalon-full.js?v1.0.2' data-main='loaderMap.js?"+new Date().getTime()+"'/>");
+    </script>
+    <style>
+        .ms-controller{
+                     visibility: hidden;
+                 }
+    </style>
+    <link href="./static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./static/css/bootstrap.ex.css" rel="stylesheet">
+    <link href="./static/css/layer.ex.css" rel="stylesheet">
+    <link href="./static/css/style.css" rel="stylesheet">
+
+</head>
+<body  class="ms-controller"  ms-controller="root">
+<nav class="topbar">
+        <a class="navbar-brand" href="#" >纹身大咖 - 商家后台</a>
+</nav>
+
+<div class="container ms-controller"  ms-controller="root">
+    <div class="row">
+        <div class="sidebar">
+            <ul ms-visible="logined">
+                <li ms-repeat-menu_row="menus" ms-class-expand="role==menu_row.role||temprole==menu_row.role" ms-class-active="role==menu_row.role">
+                    <div ms-click="tab($event,menu_row.role,menu_row.url)">{{creat$icon(menu_row.icon)|html}}&nbsp;&nbsp;&nbsp;{{menu_row.title}}</div>
+                    <a ms-repeat="menu_row.submenus" ms-attr-href="el.url" ms-class-active="bodyPage==el.name" ms-visible="el.visible">{{el.title}}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="main" ms-include-src="bodyPage"></div>
+    </div>
+</div>
+</body>
+</html>

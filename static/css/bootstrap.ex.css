@@ -1,0 +1,36 @@
+.breadcrumb{
+    background-color: #fafafa !important;
+}
+
+dt,dd{
+    padding-top:5px;
+    padding-bottom:5px;
+}
+
+body{
+    /*background-color: #444444;*/
+}
+
+.main{
+    background-color: white;
+    /*min-height: 1080px;*/
+}
+
+dl{
+    margin: 0;
+}
+
+textarea{
+    resize: none !important;
+}
+
+.glyphicon-crop:before {
+    content: '';
+    background:url(../fonts/icon_crop.svg) no-repeat center;
+    width: 1em;
+    height: 1em;
+    background-size: contain;
+    display: block;
+}
+
+.dropmenu

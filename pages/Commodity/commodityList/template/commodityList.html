@@ -1,0 +1,86 @@
+<ol class="breadcrumb">
+    <li class="active">商品列表</li>
+</ol>
+<div ms-controller="commodityList">
+
+    <div class="form-inline">
+        <ul class="nav nav-tabs" style="margin: 20px 0;">
+            <li role="presentation" ms-class-active="sale==1" ms-click="e$typeTab($event,1)"><a>上架中</a></li>
+            <li role="presentation" ms-class-active="sale==2" ms-click="e$typeTab($event,2)"><a>已下架</a></li>
+            <!--<li role="presentation" ms-class-active="sale==2" ms-click="e$typeTab($event,2)"><a>待审核</a></li>-->
+        </ul>
+    </div>
+
+    <!--<div class="form-inline">-->
+        <!--<div class="input-group">-->
+            <!--<label class="input-group-addon">排序</label>-->
+            <!--<select class="form-control" ms-duplex="Search$sort">-->
+                <!--<option value="1">时间倒序</option>-->
+                <!--<option value="2">时间正序</option>-->
+                <!--<option value="3">权重倒序</option>-->
+                <!--<option value="4">权重正序</option>-->
+            <!--</select>-->
+        <!--</div>-->
+        <!--&nbsp;&nbsp;&nbsp;&nbsp;-->
+
+        <!--<select class="form-control" ms-duplex="Search$type">-->
+            <!--<option value="0">标签</option>-->
+            <!--<option value="1">名称</option>-->
+        <!--</select>-->
+        <!--<input type="text" class="form-control" placeholder="按标签搜索" ms-duplex="Search$tag" ms-visible="!Search$type">-->
+        <!--<input type="text" class="form-control" placeholder="按名称搜索" ms-duplex="Search$title" ms-visible="Search$type">-->
+
+        <!--{{creat$button({icon:'search',skin:'primary',title:'搜索',click:'getList($event,page)'})|html}}-->
+        <!--<br/><br>-->
+
+        <!--<hr>-->
+    <!--</div>-->
+
+    <div ms-visible="list.length>0">
+        <!--<p>总数:{{totalNum}}</p>-->
+        <table class="table table-striped text-center">
+            <thead>
+            <tr>
+                <th class="store_field_tab col-xs-1 text-center">序号</th>
+                <th class="store_field_tab col-xs-2 text-center">图片</th>
+                <th class="store_field_tab col-xs-1 text-center">标题</th>
+                <th class="store_field_tab col-xs-1 text-center">纹身师</th>
+                <th class="store_field_tab col-xs-1 text-center">价格</th>
+                <th class="store_field_tab col-xs-1 text-center">机构</th>
+                <th class="store_field_tab col-xs-1 text-center">浏览量</th>
+                <th class="store_field_tab col-xs-1 text-center">收藏数</th>
+                <th class="store_field_tab col-xs-1 text-center">购买数</th>
+                <th class="store_field_tab col-xs-2 text-center">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ms-repeat-row="list">
+                <td>{{filter$index($index,page,limit)}}</td>
+                <td><a ms-attr-href="{{row.images[0]}}" target="_blank"><img
+                        ms-attr-src="{{row.images[0]+'?imageView/1/w/200/h/200'}}"/></a></td>
+                <td>{{row.title}}</td>
+                <td><a ms-href="#!/userInfo/{{row.storeId}}">{{row.storeId}}</a></td>
+                <td>{{f$current(row.price)}}</td>
+                <td>{{f$none(row.companyName)}}</td>
+                <td>{{row.visitCount}}</td>
+                <td>{{row.favoriteCount}}</td>
+                <td>{{row.buyCount}}</td>
+                <td>
+                    {{creat$button({title:'查看',click:'e$detail($event,row._id)',visible:'companyRole'})|html}}
+                    {{creat$button({title:'查看',click:'e$Edit($event,$index)',visible:'!companyRole'})|html}}
+                    {{creat$button({title:'下架',click:'e$Cancel($event,row._id)',visible:'sale==1&&companyRole'})|html}}
+                    {{creat$button({title:'再次审核',click:'e$Auth($event,row._id)',visible:'sale==2&&companyRole'})|html}}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <hr>
+
+        {{creat$page()|html}}
+    </div>
+
+    <div ms-visible="list.length==0">
+        连一条记录都找不到啊。
+    </div>
+
+</div>

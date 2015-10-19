@@ -1,0 +1,13 @@
+<div class="form-inline">
+    <input type="button" value="上一页" class="btn btn-default" ms-visible="${page}>1"
+           ms-click="${getList}($event,${page}-1)"/>
+
+    <div class="input-group  col-xs-3">
+        <label class="input-group-addon">当前页码</label>
+        <input type="tel" class="form-control" ms-duplex-number="${page}" disabled style="min-width: 50px;background-color: white">
+
+        <div class="input-group-addon">共{{${max}}}页</div>
+    </div>
+    <input type="button" value="下一页" class="btn btn-default" ms-visible="${page}<${max}"
+           ms-click="${getList}($event,${page}+1)"/>
+</div>
