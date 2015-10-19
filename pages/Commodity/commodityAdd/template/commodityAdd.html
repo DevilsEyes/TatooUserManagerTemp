@@ -130,7 +130,7 @@
         <div class="form-group">
             <div class="col-xs-offset-2 col-xs-10">
                 {{creat$button({skin:'success',title:'保存',icon:'saved',visible:'sale!=1&&(!readOnly)&&role',click:'e$EditAdd($event)'})|html}}
-                {{creat$button({skin:'warning',title:'编辑',icon:'edit',visible:'sale==1&&(!readOnly)&&role',click:'e$Down($event)'})|html}}
+                {{creat$button({skin:'warning',title:'编辑',icon:'edit',visible:'sale==1&&role',click:'e$Down($event)'})|html}}
             </div>
         </div>
 

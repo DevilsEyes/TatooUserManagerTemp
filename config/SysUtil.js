@@ -24,6 +24,12 @@ define(function(){
                 layer.msg('请先登录！');
                 avalon.vmodels.root.logined = false;
                 location.href = '#!/Login/';
+                return;
+            }else if(data.code!=0){
+                layer.msg(data.msg);
+                avalon.vmodels.root.logined = false;
+                location.hash = '#!/Login/';
+                return;
             }
             else if(data.code==0){
                 window.cid = data.data.userInfo.companyId;
@@ -32,7 +38,6 @@ define(function(){
                 window.companyRole = data.data.companyRole;
                 avalon.vmodels.root.logined = true;
             }
-
             //console.log(data.data.companyRole);
 
             if(data.data.companyRole == 0){
@@ -43,6 +48,9 @@ define(function(){
                 avalon.vmodels.root.menus[0].submenus[1].visible = true;
                 avalon.vmodels.root.menus[0].submenus[2].visible = true;
                 avalon.vmodels.root.companyRole = true;
+            }
+            if(location.hash=='#!/login'){
+                location.hash = '#!/commodityList/';
             }
         }
     };

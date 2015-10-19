@@ -3,9 +3,7 @@
  */
 
 require.config({
-    //baseUrl: '/Tatoo%20userManagerT/',  //本机路径
-    baseUrl: '/companyManager/',//网络路径
-    //baseUrl: '/mzg_cms/',//本机路径
+    baseUrl: './',
     paths: {
         //test:'test.js',
 
@@ -25,10 +23,10 @@ require.config({
         plupload: 'vendor/plupload/plupload.full.min.js',
         qiniu: 'vendor/qiniu/qiniu.min.js',
 
-        myQiniu:'vendor/myQiniu.js',
+        myQiniu: 'vendor/myQiniu.js',
         Address: 'vendor/Address.js',
         unitTemp: 'vendor/Template.js',
-        bank:'vendor/bank.js',
+        bank: 'vendor/bank.js',
 
         Zebar: 'vendor/zebra/zebra_datepicker.js',
 
@@ -52,19 +50,14 @@ require.config({
 
         jsonp: ['jquery'],
         md5: ['jquery'],
-        Jcrop:['jquery','css!/static/css/jquery.Jcrop.min.css'],
-        bank:['css!/static/css/bank.css'],
+        Jcrop: ['jquery', 'css!/static/css/jquery.Jcrop.min.css'],
+        bank: ['css!/static/css/bank.css'],
         Zebar: ['jquery'],
-        myQiniu:['qiniu','plupload']
+        myQiniu: ['qiniu', 'plupload']
     }
 });
 
-require(['avalon', "SysUtil?v=a23626isf", "SysConfig", 'mmRouter', 'main?201sdg436g', "domReady!", "Zebar", "jsonp", 'md5'], function (avalon, SysUtil, SysConfig) {
-
-    //SysConfig.set('http://api.meizhanggui.cc/WenShen/');
-    SysConfig.set('http://123.57.42.13/WenShen/');
-    //SysConfig.set('http://192.168.56.1/WenShen/');
-    //SysConfig.set('http://192.168.199.154/WenShen/');
+require(['avalon', "SysUtil?v=fqwff", "SysConfig", 'mmRouter', 'main?201sdg436g', "domReady!", "Zebar", "jsonp", 'md5'], function (avalon, SysUtil, SysConfig) {
 
     require(['login?2015071sg6',
         'commodityList?20151017gerheS',

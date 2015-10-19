@@ -40,7 +40,7 @@ define(["avalon", 'mmRouter', "text!/template/commodityAdd.html", "SysConfig", '
         $id: "commodityAdd",
         commodityId: '',
 
-        readOnly:false,
+        readOnly: false,
 
         pattern: 'add',//edit
         isUploading: false,
@@ -257,8 +257,8 @@ define(["avalon", 'mmRouter', "text!/template/commodityAdd.html", "SysConfig", '
                 shadeClose: true,
                 closeBtn: true,
                 fix: false,
-                btn:false,
-                area:'800px'
+                btn: false,
+                area: '800px'
             });
             avalon.scan(document.body);
         },
@@ -306,14 +306,15 @@ define(["avalon", 'mmRouter', "text!/template/commodityAdd.html", "SysConfig", '
                     model.content = data.description;
                     model.price = data.price;
                     model.primeCost = data.primeCost;
-                    for(i=0;i<clerkList.length;i++){
-                        if(data.storeId == clerkList[i].userId) {
+                    for (i = 0; i < clerkList.length; i++) {
+                        if (data.storeId == clerkList[i].userId) {
                             model.tattooist = clerkList[i];
                             break;
                         }
                     }
+                    model.readOnly = (model.sale == 1);
 
-                    if(avalon.vmodels.root.companyRole==false){
+                    if (avalon.vmodels.root.companyRole == false) {
                         $('button').remove();
                     }
 
@@ -330,6 +331,7 @@ define(["avalon", 'mmRouter', "text!/template/commodityAdd.html", "SysConfig", '
         AddInit: function () {
             model.pattern = 'add';//edit
             model.isUploading = false;
+            model.readOnly = false;
 
             model.title = '';
             model.content = '';
