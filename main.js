@@ -8,45 +8,44 @@ define(['avalon', 'mmRouter', 'SysConfig', 'SysValue', 'SysUtil', 'unitTemp', 'j
     $('.main').css('min-height', $('.sidebar').height() + 200);
     avalon.log("加载avalon完毕，开始构建根VM与加载其他模块");
     avalon.templateCache.empty = " ";
+
+    var MENUS = [
+        {
+            title: "商品",
+            submenus: [
+                {
+                    title: "店铺商品",
+                    url: "#!/commodityList/",
+                    name: 'commodityList',
+                    role: 0,
+                    visible: true
+                },
+                {
+                    title: "审核中商品",
+                    url: "#!/commodityAuthList/",
+                    name: 'commodityAuthList',
+                    role: 1,
+                    visible: true
+                },
+                {
+                    title: "新增商品",
+                    url: "#!/commodityAdd/",
+                    name: 'commodityAdd',
+                    role: 2,
+                    visible: true
+                }
+            ]
+        }
+    ];
     var model = avalon.define({
         $id: "root",
         bodyPage: 'empty',
-        companyRole:0,
-        avatar:'',
-        nickname:'',
+        companyRole: 0,
+        avatar: '',
+        nickname: '',
+        companyName: '',
         role: 0,
-        temprole: 0,
-        menus: [
-            {
-                title: "商品",
-                icon: 'yen',
-                role: 5,
-                url: '#!/commodityList/',
-                submenus: [
-                    {
-                        title: "店铺商品",
-                        url: "#!/commodityList/",
-                        name: 'commodityList',
-                        role: 5,
-                        visible:true
-                    },
-                    {
-                        title: "审核中商品",
-                        url: "#!/commodityAuthList/",
-                        name: 'commodityAuthList',
-                        role: 5,
-                        visible:true
-                    },
-                    {
-                        title: "新增商品",
-                        url: "#!/commodityAdd/",
-                        name: 'commodityAdd',
-                        role: 5,
-                        visible:true
-                    }
-                ]
-            }
-        ],
+        menus: MENUS,
         api: SysConfig.ApiUrl,
         apis: [
             ['正式服', SysValue.ApiUrlMain],
@@ -54,22 +53,31 @@ define(['avalon', 'mmRouter', 'SysConfig', 'SysValue', 'SysUtil', 'unitTemp', 'j
         ],
         logined: false,
 
-        tab: function ($event, role, url) {
-            model.role = role;
-            location.hash = url;
+        tab: function (name) {
+            var i, j, ar=[];
+            for (i = 0; i < MENUS.length; i++) {
+                for (j = 0; j < MENUS[i].submenus.length; j++) {
+                    ar = ar.concat(MENUS[i].submenus)
+                }
+            }
+            for (i = 0; i < ar.length; i++) {
+                if (name == ar[i].title) {
+                    return model.role = ar[i].role;
+                }
+            }
         },
-        e$logout:function(){
+        e$logout: function () {
             $.jsonp({
                 url: SysConfig.ApiUrl + "V3.0.0/User/logout?_method=POST",
                 callbackParameter: "callback",
                 success: function (data) {
                     data = JSON.parse(data);
                     console.dir(data);
-                    if(data.code==0){
+                    if (data.code == 0) {
                         layer.msg('您已安全退出!');
                         avalon.vmodels.root.logined = false;
                         return location.hash = '#!login';
-                    }else{
+                    } else {
                         layer.msg(data.msg);
                     }
                 },
@@ -135,12 +143,12 @@ define(['avalon', 'mmRouter', 'SysConfig', 'SysValue', 'SysUtil', 'unitTemp', 'j
             //  filter:过滤器
             //  width:key的宽度(1-12,默认2)
             // }
-            if(obj.width){
-                obj.pw=12-obj.width;
-                obj.lw=obj.width;
-            }else{
-                obj.pw=10;
-                obj.lw=2;
+            if (obj.width) {
+                obj.pw = 12 - obj.width;
+                obj.lw = obj.width;
+            } else {
+                obj.pw = 10;
+                obj.lw = 2;
             }
             return unitTemp.formItem.render(obj);
         },

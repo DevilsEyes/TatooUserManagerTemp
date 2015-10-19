@@ -40,12 +40,12 @@ define(function(){
                 window.cid = data.data.userInfo.companyId;
                 avalon.vmodels.root.avatar = data.data.userInfo.avatar;
                 avalon.vmodels.root.nickname = data.data.userInfo.nickname;
+                avalon.vmodels.root.companyName = data.data.companyInfo.name;
+                console.dir(data.data);
                 window.clerkList = data.data.clerkList;
                 window.companyRole = data.data.companyRole;
                 avalon.vmodels.root.logined = true;
             }
-            //console.log(data.data.companyRole);
-
             if(data.data.companyRole == 0){
                 avalon.vmodels.root.menus[0].submenus[1].visible = false;
                 avalon.vmodels.root.menus[0].submenus[2].visible = false;
